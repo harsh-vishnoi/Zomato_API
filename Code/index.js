@@ -417,14 +417,14 @@ var getSearch = (zomatoUserKey, Data) => {
 
         var optionspost = {
             host: 'developers.zomato.com',
-            path: `/api/v2.1/search?`,
+            path: `/api/v2.1/search?${Path}`,
             headers: postheaders,
             method: 'GET'
         };
 
         const req = https.request(optionspost, (res) => {
-        res.on('data', function (data) {
-               resolve(data.toString('utf8'));
+        res.on('data', function (Data) {
+                resolve(Data.toString('utf8'));
             });
         });
         
