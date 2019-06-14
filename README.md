@@ -26,6 +26,7 @@ Install using npm :
 A seperate example has been added in the repository displaying usage of the package.
 
 ### Zomato.getCategories
+Get a list of categories. List of all restaurants categorized under a particular restaurant type can be obtained using /Search API with Category ID as inputs
 ```javascript
 Zomato.getCategories(API_key, Type).then((result) => {
 	console.log(result)
@@ -39,4 +40,30 @@ Zomato.getCategories(API_key, Type).then((result) => {
  `API_key`    |   string
   `Type`	  |	  string
 
-**Type : **  Type could be *id* ,*name* or *undefined*.
+ __Type__  :  Type could be *id* ,*name* or *undefined*.
+
+### Zomato.getCities
+Find the Zomato ID and other details for a city . You can obtain the Zomato City ID in one of the following ways:  
+
+1.  City Name in the Search Query - Returns list of cities matching the query
+2.  Using coordinates - Identifies the city details based on the coordinates of any location inside a city
+
+If you already know the Zomato City ID, this API can be used to get other details of the city.
+```javascript
+Zomato.getCities(API_key, {q :  "Delhi"}).then((result) => {
+	console.log(result)
+}).catch(function(err){
+	console.log(err)
+});
+```
+
+  Parameter   |  Data Type
+--------------|---------------
+ `API_key`    |   string
+  `q`	      |	  string
+  `lat`       |   double
+  `lon`       |   double
+   `city_ids` |   string
+   `count` |   integer
+ 
+ __Type__  :  Type is an object having *q*, *lat*, *lon*, *city_ids* and *count*. Input it in same order.
