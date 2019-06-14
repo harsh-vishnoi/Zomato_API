@@ -132,3 +132,61 @@ Zomato.getLocation(API_Key, Query, Data).then((result) => {
 })
 ```
  __Data__  :  Data is an object having *lat*, *lon* and *count* . Pass parameter in same order.
+ 
+### Zomato.getDailyMenu
+
+Get daily menu using Zomato restaurant ID
+```javascript
+Zomato.getDailyMenu(API_Key, Res_ID).then((result) => {
+	console.log(result)
+}).catch(function(err) {
+	console.log(err)
+})
+```
+
+### Zomato.getRestaurant
+Get detailed restaurant information using Zomato restaurant ID. Partner Access is required to access photos and reviews.
+```javascript
+Zomato.getRestaurant(API_Key, Res_ID).then((result) => {
+	console.log(result)
+}).catch(function(err){
+	console.log(err)
+})
+```
+
+### Zomato.getReviews
+Get restaurant reviews using the Zomato restaurant ID. Only 5 latest reviews are available under the Basic API plan.
+```javascript
+Zomato.getReviews(API_Key, Res_ID, Data).then((result) => {
+	console.log(result)
+}).catch(function(err){
+	console.log(err)
+})
+```
+__Data__ :  Data is an object having *start* and *count*. Place parameters in the same order.
+
+### Zomato.getSearch
+The location input can be specified using Zomato location ID or coordinates. Cuisine / Establishment / Collection IDs can be obtained from respective api calls. Get up to 100 restaurants by changing the 'start' and 'count' parameters with the maximum value of count being 20. Partner Access is required to access photos and reviews.
+```javascript
+Zomato.getSearch(API_Key, Data).then((result) => {
+	console.log(result)
+}).catch(function(err) {
+	console.log(err)
+})
+```
+__Data__ :  Data is an object having *entity_id*, *entity_type*, *q*, *start*, *count*, *lat*, *lon*, *radius*, *cuisines*, *establishment_type*, *collection_id*, 
+*category*, *sort* and *order*. Place parameters in the same order.
+
+Parameters | Data type
+-----------|--------
+`API_Key`|string
+`Type`|string
+`city_id`|integer
+`lat`|double
+`lon`|double
+`LocationType`|string
+`query`|string
+`Res_ID`|integer
+
+### Contributing
+Code can be made more efficient and customised. Any contribution towards that will be appreciated. 

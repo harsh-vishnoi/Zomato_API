@@ -5,83 +5,86 @@ const Zomato = require("./index")
 const zomatoUserKey ;
 
 //Example function to get restaurant of all categories.
-Zomato.getCategories("892d2bb4eeef7402e4e1c8d7ca462fb7", "name").then((result) => {
+Zomato.getCategories(zomatoUserKey, "name").then((result) => {
     console.log(result)
 }).catch(function(err){
     console.log(err)
 })
 
-//Example function to Geocode given latitudes and longitudes.
+//Example function to find the Zomato ID and other details for a city.
+Zomato.getCities(zomatoUserKey, {q : "Delhi"}).then((result) => {
+    console.log(result)
+}).catch(function(err){
+    console.log(err)
+});
+
+//Example function to returns Zomato Restaurant Collections in a City
+Zomato.getCollection(zomatoUserKey, 280).then((result) => {
+    console.log(result)
+}).catch(function(err) {
+    console.log(err)
+})
+
+//Example function to get a list of all cuisines of restaurants listed in a city
+Zomato.getCuisines(zomatoUserKey, 280).then((result) => {
+    console.log(result)
+}).catch(function(err){
+    console.log(err)
+})
+
+//Example function to get a list of restaurant types in a city
+Zomato.getEstablishment(zomatoUserKey, 280).then((result) => {
+    console.log(result)
+}).catch(function(err){
+    console.log(err)
+})
+
+//Example function to get Foodie and Nightlife Index, list of popular cuisines and nearby restaurants around the given coordinates.
 Zomato.getGeocode(zomatoUserKey, 40.9006, 174.8860).then((result) => {
     console.log(result)
 }).catch(function(err) {
     console.log(err)
 })
 
-// Zomato.getEstablishment("892d2bb4eeef7402e4e1c8d7ca462fb7", 280).then((result) => {
-//     console.log(result)
-// }).catch(function(err){
-//     console.log(err)
-// })
 
-// Zomato.getDailyMenu(zomatoUserKey, 18732052).then((result) => {
-//     console.log(result)
-// }).catch(function(err) {
-//     console.log(err)
-// })
+//Example function to get Foodie Index, Nightlife Index, Top Cuisines and Best rated restaurants in a given location
+Zomato.getLocationDetails(zomatoUserKey, 280, "city").then((result) => {
+    console.log(result)
+}).catch(function(err) {
+    console.log(err)
+})
 
-// Zomato.getRestaurant(zomatoUserKey, 18732052).then((result) => {
-//     console.log(result)
-// }).catch(function(err){ 
-//     console.log(err)
-// })
+//Search for Zomato locations by keyword. Provide coordinates to get better search results
+Zomato.getLocation(zomatoUserKey, "delhi").then((result) => {
+    console.log(result)
+}).catch(function(err){
+    console.log(err)
+}) 
 
-// Zomato.getReviews(zomatoUserKey, 18732052).then((result) => {
-//     console.log(result)
-// }).catch(function(err){ 
-//     console.log(err)
-// })
+//Example function to get daily menu using Zomato restaurant ID.
+Zomato.getDailyMenu(zomatoUserKey, 18732052).then((result) => {
+    console.log(result)
+}).catch(function(err) {
+    console.log(err)
+})
 
-// getSearch(zomatoUserKey, {q : "meerut", count : 2}).then((result) => {
-//     console.log(result)
-// }).catch(function(err) {
-//     console.log(err)
-// })
+//Example to get detailed restaurant information using Zomato restaurant ID.
+Zomato.getRestaurant(zomatoUserKey, 18732052).then((result) => {
+    console.log(result)
+}).catch(function(err){ 
+    console.log(err)
+})
 
+//Get reviews of Restaurants
+Zomato.getReviews(zomatoUserKey, 18732052).then((result) => {
+    console.log(result)
+}).catch(function(err){ 
+    console.log(err)
+})
 
-
-// Zomato.getCities(ZomatoKey, {q : "Delhi"}).then((result) => {
-//     console.log(result)
-// }).catch(function(err){
-//     console.log(err)
-// });
-
-// Zomato.getCollection(ZomatoKey, 280).then((result) => {
-//     console.log(result)
-// }).catch(function(err) {
-//     console.log(err)
-// })
-
-// Zomato.getCuisines(ZomatoKey, 280).then((result) => {
-//     console.log(result)
-// }).catch(function(err){
-//     console.log(err)
-// })
-
-// Zomato.getLocation(ZomatoKey, "delhi").then((result) => {
-//     console.log(result)
-// }).catch(function(err){
-//     console.log(err)
-// }) 
-
-// Zomato.getLocationDetails(ZomatoKey, 280, "city").then((result) => {
-//     console.log(result)
-// }).catch(function(err) {
-//     console.log(err)
-// })
-
-// Zomato.getSearch(ZomatoKey, {q : "meerut", count : 2}).then((result) => {
-//     console.log(result)
-// }).catch(function(err) {
-//     console.log(err)
-// })
+//Search using filters including establishment, category, location etc.
+Zomato.getSearch(zomatoUserKey, {q : "meerut", count : 2}).then((result) => {
+    console.log(result)
+}).catch(function(err) {
+    console.log(err)
+})
