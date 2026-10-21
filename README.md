@@ -1,29 +1,25 @@
 
-# Zomato-developers
+# Zomato API wrapper
 
-Zomato APIs give you access to the freshest and most exhaustive information for over 1.5 million restaurants across 10,000 cities globally. With the Zomato APIs, you can :
- * Search for restaurants by name, cuisine, or location
- * Display detailed information including ratings, location and cuisine
- * Use the Zomato Foodie Index to show great areas to dine in a city
-  
+A small Node.js client for the Zomato API v2.1 (`developers.zomato.com`). Zomato has shut that public API down, so these calls no longer return restaurant data. The module is kept as a record of the wrapper: categories, cities, collections, cuisines, establishments, geocode, locations, daily menu, restaurant, reviews, and search.
 
-# Prerequisites
+The implementation is `Code/index.js`. It sends `user-key` on each HTTPS GET and returns a promise. `Code/Example.js` calls every method. `package.json` lists `"main": "index.js"`, but there is no `index.js` at the repository root, so require the file directly.
 
- + ### Credentials
-    + Go [here](https://developers.zomato.com/) and create your API key.
+```javascript
+const Zomato = require("./Code/index");
+```
 
-**Basic:** Get free and instant access to restaurant information and search APIs (up to 1000 calls/day). API key generated is neccessary and will be required to accesss zomato APIs.
-  
+## Setup
 
-# Getting started
+```bash
+npm install
+```
 
-Install using npm :
-
-	npm i zomato-developers --save
+The only dependency is `request` 2.88, and the client does not use it. Requests go through `https`. An API key was created at `https://developers.zomato.com/` while that portal existed. The key is the first argument of every function. Do not commit a key. The placeholder in `Code/Example.js` is `const zomatoUserKey ;` and must be assigned before that file will run.
 	
-# Usage
+## Usage
 
-A seperate example has been added in the repository displaying usage of the package.
+`Code/Example.js` calls each method. The samples below match that file.
 
 ### Zomato.getCategories
 Get a list of categories. List of all restaurants categorized under a particular restaurant type can be obtained using /Search API with Category ID as inputs
@@ -188,5 +184,6 @@ Parameters | Data type
 `query`|string
 `Res_ID`|integer
 
-### Contributing
-Code can be made more efficient and customised. Any contribution towards that will be appreciated. 
+## Contributing
+
+Fixes to parameter handling and error reporting are welcome. The upstream host no longer serves `/api/v2.1`. 
